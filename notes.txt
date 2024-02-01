@@ -1,0 +1,110 @@
+What is a model?
+Answer: A model represent our tables. Meaning that we can interact (read, insert, update, delete) data to the tables in the database
+        using the model class.
+
+Where is it located? It is located in this path: App\Models\<model-name>
+
+==========================================================================
+
+Categories Table
+     Category Id           Category Name
+        1                       Travel
+        2                       Food
+        3                       Lifestyle
+        4                       Technology
+        5                       Career
+        6                       Movie
+
+
+Posts Table
+USER CREATED A POST
+Post ID             Post Title                     Categories
+-------             ----------                      --------- 
+   1               My Trip To Maldives              travel(1), career(5), lifestyle(3)
+   2               I Love Eating Foods              Food(2), Lifestyle(3)    
+   3               I Like To Watch Sci-Fi Movies    Movie(6), Technology(4)
+
+   Many To Many relationship ( hasMany() ) method relationship
+
+
+   PIVOT Table (will hold the Post IDs and the Category IDs)
+Category_Post Table (Pivot Table)
+Post_id            Category_id
+  1                   1
+  1                   5
+  1                   3
+  2                   2
+  2                   3
+  3                   6
+  3                   4
+
+
+  
+=========================================================
+Colloborative Project
+1. Modify the scrollbar in the show.blade.php
+2. When a user is inactive - hide the post in the homepage
+3. Display all the users when the "See All" is clicked
+=========================================================
+
+
+Users Table
+id                name
+1                 John Smith
+2                 David Booms
+3                 Test User1
+4                 Test User2
+5                 Test User3
+
+
+Follows Table
+
+follower_id                     following_id
+     1                              5
+     1                              2
+     3                              1
+     5                              3
+     3                              5
+     3                              4
+
+************************************************************
+
+Homework: Following Users
+1. Create a file called "following.blade.php"
+2. Create a method called "following" - this method should retrive all the Users
+3. Display only the users followed by the AUTH User
+4. Create a route
+5. Test it
+
+*************************************************************
+
+SOFT DELETES (SoftDeletes)
+- The soft deletes is going to remove users, posts, categories, etc
+  from the application. However, the data is still saved in the database
+
+Next: To start with the modal of the deactivate user
+*****************************************************************************
+
+ADMIN CATEGORIES DASHBOARD
+
+***********************************************************************************
+1-30-2024
+
+1. Display the "uncategorized" to post that do not have category.
+
+Posts table
+post id 20          My trip to Maldives            ---> Travel
+***********************************************************************************
+What is a middleware?
+Answer: is a mechanism that is use for inspecting filtering HTTP request entering the application. If the user is not authenticated (not logged-in), then they cannot enter our application.
+Think of the MIDDLEWARE as a layer of security that inspect/examins the request of an application.
+
+Goal: Create our own middleware : AdminMiddleware
+Purpose: The AdminMiddleware will allow or deny access to the admin pages.
+Basis: Our basis is the role_id. If the role_id is 1, then that user can access the admin pages.
+
+GATE: What is gate?
+Answer: It is a simple mechanism that determines whether a user is authorized to perform a certain action.
+***********************************************************************************
+SEEDER: What is a seeder? Seeding the database.
+        -> We want to populate our database table with default values.
